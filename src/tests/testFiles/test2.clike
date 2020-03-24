@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+const long long MINF = -2;
+const int max_n = 1005;
+int arr[max_n][max_n];
+long long dp[max_n][max_n][2];
+int n,m;
+long long f(int i, int j, int isLefty){
+	if(dp[i][j][isLefty]!= -1)
+		return dp[i][j][isLefty];
+	if(i > n || i < 1 || j < 1 || j > m || arr[i][j] == 0 )
+		return MINF;
+	if(i == 1){
+		long long sum = 0;
+		for(int k = j; k >= 1; k--){
+			if(arr[1][k] == 0)
+				break;
+			sum+= arr[1][k];
+		}
+		dp[i][j][isLefty] = sum;
+		return sum;
+	}
+	if(isLefty == 1){
+		long long myLeft = f(i, j-1, 1);
+		long long myHorse = f(i-2, j-1, 0);
+		if(myLeft < 0ll && myHorse < 0ll)
+			dp[i][j][isLefty] = MINF;
+		else
+			dp[i][j][isLefty] = arr[i][j] + max( myLeft, myHorse );
+
+	}
+	else{
+		long long myLeft = f(i, j-1, 0);
+		long long myHorse = f(i-2, j+1, 1);
+		if(myLeft < 0ll && myHorse < 0ll)
+			dp[i][j][isLefty] = MINF;
+		else
+			dp[i][j][isLefty] = arr[i][j] + max( myLeft, myHorse );
+
+	}
+
+	return dp[i][j][isLefty];
+
+
+}
+
+
+int main(){
+
+	cin>>n>>m;
+	for(int i = 1 ; i<= n ; i++){
+		for(int j = 1 ; j<=m ; j++){
+			cin>>arr[i][j];
+		}
+	}
+	memset(dp, -1 ,sizeof(dp));
+	long long maxi = -2;
+	for(int j = 1 ; j <= m; j++){
+		if(arr[n][j] == 0)
+			continue;
+		long long thisCol = f(n,j,1);
+		maxi = max(thisCol, maxi);
+	}
+	cout<<max(0ll,maxi)<<endl;
+}

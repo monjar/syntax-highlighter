@@ -1,0 +1,10 @@
+#include<stdio.h>
+#include<math.h>
+
+int main() {
+    printf( "salaaaam
+            in yek stringe
+            chand khatti ast");
+	return 0;
+}
+

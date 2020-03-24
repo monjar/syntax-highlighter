@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<math.h>
+
+int main() {
+	return 0x14214 + 1232L;
+}
+
+static void MyFunction ( int id ){
+
+	double anotherNumber = 1.3e+2;
+
+	float f = id / 4e-23F;
+}

@@ -1,0 +1,33 @@
+#include<stdio.h>
+
+int main() {
+	long x = 1L;
+	if (x == 1.2e-122)
+		printf ( "x is equal to one.\n ih[ihi\bewfe " );
+	else
+		printf ( 'n'+'\n' );
+		
+	//this is a comment
+	float y2_ = 1.2F;
+	while ( true ){e
+	
+	y2_ *= 120;
+	/*this also is a comment
+
+	still a comment...
+
+	*/
+
+	}
+	return 0;
+}
+
+static void MyFunction ( int id ){
+	double anotherNumber = 1.3e+2;
+	//to check stuff
+	if (id == 0x18)
+		printf ( "%d is 24" , &id);
+	else 
+		printf ( "%f is a number too" , &anothernumber);
+		
+}
